@@ -20,5 +20,9 @@ namespace WebApplication_Store.Models
         }
 
         public System.Data.Entity.DbSet<WebApplication_Store.Models.Produto> Produtoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.TipoDocumento> TipoDocumentoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.Funcionario> Funcionarios { get; set; }
     }
 }

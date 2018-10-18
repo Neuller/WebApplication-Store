@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -15,6 +16,9 @@ namespace WebApplication_Store
     {
         protected void Application_Start()
         {
+            // Inicialização do Banco de Dados atualizado.
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.WebApplication_StoreContext, Migrations.Configuration>());
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
