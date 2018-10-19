@@ -46,7 +46,7 @@ namespace WebApplication_Store.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Descricao")] TipoDocumento tipoDocumento)
+        public ActionResult Create([Bind(Include = "IDTipoDocumento,Descricao")] TipoDocumento tipoDocumento)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebApplication_Store.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Descricao")] TipoDocumento tipoDocumento)
+        public ActionResult Edit([Bind(Include = "IDTipoDocumento,Descricao")] TipoDocumento tipoDocumento)
         {
             if (ModelState.IsValid)
             {

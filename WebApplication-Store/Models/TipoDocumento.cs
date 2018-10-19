@@ -9,8 +9,10 @@ namespace WebApplication_Store.Models
     public class TipoDocumento
     {
         [Key]
-        public int ID { get; set; }
+        public int IDTipoDocumento { get; set; }
 
+        [Display(Name = "Tipo de Documento")]
+        [Required(ErrorMessage = "Você precisa preenhcer o campo {0}")]
         public string Descricao { get; set; }
 
         public virtual ICollection<Funcionario> Funcionarios { get; set; }

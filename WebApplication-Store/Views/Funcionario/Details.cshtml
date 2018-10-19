@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.TipoDocumento.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocumento.Descricao)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
@@ -66,9 +74,17 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDocumento)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDFuncionario }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

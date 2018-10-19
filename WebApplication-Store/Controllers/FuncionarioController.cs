@@ -17,7 +17,8 @@ namespace WebApplication_Store.Controllers
         // GET: Funcionario
         public ActionResult Index()
         {
-            return View(db.Funcionarios.ToList());
+            var funcionarios = db.Funcionarios.Include(f => f.TipoDocumento);
+            return View(funcionarios.ToList());
         }
 
         // GET: Funcionario/Details/5
@@ -38,6 +39,7 @@ namespace WebApplication_Store.Controllers
         // GET: Funcionario/Create
         public ActionResult Create()
         {
+            ViewBag.IDTipoDocumento = new SelectList(db.TipoDocumentoes, "IDTipoDocumento", "Descricao");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace WebApplication_Store.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nome,Sobrenome,Idade,Salario,Nascimento,DataCadastro,Email")] Funcionario funcionario)
+        public ActionResult Create([Bind(Include = "IDFuncionario,Nome,Sobrenome,Idade,Salario,Nascimento,DataCadastro,Email,IDTipoDocumento,NumeroDocumento")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace WebApplication_Store.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.IDTipoDocumento = new SelectList(db.TipoDocumentoes, "IDTipoDocumento", "Descricao", funcionario.IDTipoDocumento);
             return View(funcionario);
         }
 
@@ -70,6 +73,7 @@ namespace WebApplication_Store.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.IDTipoDocumento = new SelectList(db.TipoDocumentoes, "IDTipoDocumento", "Descricao", funcionario.IDTipoDocumento);
             return View(funcionario);
         }
 
@@ -78,7 +82,7 @@ namespace WebApplication_Store.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome,Sobrenome,Idade,Salario,Nascimento,DataCadastro,Email")] Funcionario funcionario)
+        public ActionResult Edit([Bind(Include = "IDFuncionario,Nome,Sobrenome,Idade,Salario,Nascimento,DataCadastro,Email,IDTipoDocumento,NumeroDocumento")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace WebApplication_Store.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.IDTipoDocumento = new SelectList(db.TipoDocumentoes, "IDTipoDocumento", "Descricao", funcionario.IDTipoDocumento);
             return View(funcionario);
         }
 
