@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -19,10 +20,17 @@ namespace WebApplication_Store.Models
         {
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
+
         public System.Data.Entity.DbSet<WebApplication_Store.Models.Produto> Produtoes { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication_Store.Models.TipoDocumento> TipoDocumentoes { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication_Store.Models.Funcionario> Funcionarios { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.Fornecedor> Fornecedors { get; set; }
     }
 }
