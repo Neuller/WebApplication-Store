@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication_Store.Models
@@ -13,6 +14,7 @@ namespace WebApplication_Store.Models
         public string Descricao { get; set; }
 
         [Display(Name = "Preço")]
+        [DataType(DataType.Currency)]
         [Required(ErrorMessage = "Você precisa preenhcer o campo {0}")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public decimal Preco { get; set; }
@@ -30,6 +32,9 @@ namespace WebApplication_Store.Models
         [Display(Name = "Comentário")]
         [DataType(DataType.MultilineText)]
         public string Comentario { get; set; }
+
+        public virtual ICollection<FornecedorProduto> FornecedorProduto { get; set; }
+        public virtual ICollection<OrdemDetalhe> OrdemDetalhe { get; set; }
 
     }
 }

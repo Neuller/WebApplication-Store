@@ -16,5 +16,7 @@ namespace WebApplication_Store.Models
         public string Descricao { get; set; }
 
         public virtual ICollection<Funcionario> Funcionarios { get; set; }
+
+        public virtual ICollection<Customizar> Customizar { get; set; }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace WebApplication_Store.Models
 {
-    public class Fornecedor
+    public class Customizar
     {
         [Key]
-        public int IDFornecedor { get; set; }
+        public int IDCustomizar { get; set; }
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Você precisa preenhcer o campo {0}")]
@@ -28,6 +31,15 @@ namespace WebApplication_Store.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        public virtual ICollection<FornecedorProduto> FornecedorProduto { get; set; }
+        public int IDTipoDocumento { get; set; }
+
+        [Display(Name = "Número do Documento")]
+        [Required(ErrorMessage = "Você precisa preenhcer o campo {0}")]
+        public string NumeroDocumento { get; set; }
+
+        public string NomeCompleto { get { return string.Format("{0} {1}", Nome, Sobrenome); } }
+
+        public virtual TipoDocumento TipoDocumento { get; set; }
+        public virtual ICollection<Ordem> Ordem { get; set; }
     }
 }

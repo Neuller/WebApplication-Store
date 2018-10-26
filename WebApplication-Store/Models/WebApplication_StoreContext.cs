@@ -32,5 +32,11 @@ namespace WebApplication_Store.Models
         public System.Data.Entity.DbSet<WebApplication_Store.Models.Funcionario> Funcionarios { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication_Store.Models.Fornecedor> Fornecedors { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.Customizar> Customizars { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.Ordem> Ordem { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication_Store.Models.OrdemDetalhe> OrdemDetalhe { get; set; }
     }
 }
